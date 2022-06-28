@@ -26,7 +26,9 @@ function Product(props) {
         <div className="card-footer">
           {switchAdmin ? (
             <button type="button" className="btn btn-primary">
-              Edit Product
+              <Link className="text-white" to={`/products/edit/${product.id}`}>
+                Edit Product
+              </Link>
             </button>
           ) : (
             <button

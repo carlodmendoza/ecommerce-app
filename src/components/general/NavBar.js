@@ -78,9 +78,7 @@ function NavBar(props) {
             </form>
           </div>
           {switchAdmin ? (
-            <button type="button" className="btn btn-primary btn-sm me-5">
-              Add Product
-            </button>
+            <></>
           ) : (
             <button type="button" className="btn btn-primary btn-sm me-5">
               <Link className="nav-link active" to="/cart">

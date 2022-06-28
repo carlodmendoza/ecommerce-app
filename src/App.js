@@ -4,12 +4,13 @@ import NavBar from "./components/general/NavBar";
 import Footer from "./components/general/Footer";
 import ProductPage from "./components/ProductPage";
 import SingleProductPage from "./components/SingleProductPage";
+import EditProductPage from "./components/EditProductPage";
 import CartPage from "./components/CartPage";
 import data from "./data/data";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 
 function App() {
-  const { products } = data;
+  const [products, setProducts] = useState(data.products);
   const [cartItems, setCartItems] = useState([]);
   const [switchAdmin, setSwitchAdmin] = useState(false);
 
@@ -70,7 +71,18 @@ function App() {
           />
           <Route
             path="products/:productId"
-            element={<SingleProductPage addToCart={addToCart} />}
+            element={
+              <SingleProductPage
+                addToCart={addToCart}
+                switchAdmin={switchAdmin}
+              />
+            }
+          />
+          <Route
+            path="products/edit/:productId"
+            element={
+              <EditProductPage getProducts={(prods) => setProducts(prods)} />
+            }
           />
         </Routes>
         <Footer />

@@ -11,6 +11,7 @@ import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 function App() {
   const { products } = data;
   const [cartItems, setCartItems] = useState([]);
+  const [switchAdmin, setSwitchAdmin] = useState(false);
 
   const addToCart = (product) => {
     const exists = cartItems.find((x) => x.id === product.id);
@@ -41,12 +42,21 @@ function App() {
   return (
     <Router>
       <div className="App">
-        <NavBar cartItemsCount={cartItems.length} />
+        <NavBar
+          cartItemsCount={cartItems.length}
+          getSwitchAdmin={(status) => setSwitchAdmin(status)}
+        />
         <Routes>
           <Route
             exact
             path="/"
-            element={<ProductPage addToCart={addToCart} products={products} />}
+            element={
+              <ProductPage
+                addToCart={addToCart}
+                products={products}
+                switchAdmin={switchAdmin}
+              />
+            }
           />
           <Route
             path="/cart"

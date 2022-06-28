@@ -2,7 +2,7 @@ import React from "react";
 import Product from "./shared/Product";
 
 function ProductPage(props) {
-  const { products, addToCart } = props;
+  const { products, addToCart, switchAdmin } = props;
 
   return (
     <main>
@@ -15,6 +15,7 @@ function ProductPage(props) {
                 key={product.id}
                 product={product}
                 addToCart={addToCart}
+                switchAdmin={switchAdmin}
               />
             );
           })}

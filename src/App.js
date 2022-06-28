@@ -5,6 +5,7 @@ import Footer from "./components/general/Footer";
 import ProductPage from "./components/ProductPage";
 import CartPage from "./components/CartPage";
 import data from "./data/data";
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 
 function App() {
   const { products } = data;
@@ -37,16 +38,29 @@ function App() {
   };
 
   return (
-    <div className="App">
-      <NavBar cartItemsCount={cartItems.length} />
-      <ProductPage addToCart={addToCart} products={products} />
-      <CartPage
-        addToCart={addToCart}
-        removeFromCart={removeFromCart}
-        cartItems={cartItems}
-      />
-      <Footer />
-    </div>
+    <Router>
+      <div className="App">
+        <NavBar cartItemsCount={cartItems.length} />
+        <Routes>
+          <Route
+            exact
+            path="/"
+            element={<ProductPage addToCart={addToCart} products={products} />}
+          />
+          <Route
+            path="/cart"
+            element={
+              <CartPage
+                addToCart={addToCart}
+                removeFromCart={removeFromCart}
+                cartItems={cartItems}
+              />
+            }
+          />
+        </Routes>
+        <Footer />
+      </div>
+    </Router>
   );
 }
 

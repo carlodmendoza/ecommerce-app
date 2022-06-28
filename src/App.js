@@ -3,6 +3,7 @@ import React, { useState } from "react";
 import NavBar from "./components/general/NavBar";
 import Footer from "./components/general/Footer";
 import ProductPage from "./components/ProductPage";
+import SingleProductPage from "./components/SingleProductPage";
 import CartPage from "./components/CartPage";
 import data from "./data/data";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
@@ -56,6 +57,10 @@ function App() {
                 cartItems={cartItems}
               />
             }
+          />
+          <Route
+            path="products/:productId"
+            element={<SingleProductPage addToCart={addToCart} />}
           />
         </Routes>
         <Footer />
